@@ -33,7 +33,7 @@ jobs:
       - name: SSH script
         uses: appleboy/ssh-action@master
         with:
-          host: ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
+          host: 13.234.38.29
           username: ubuntu
           key: ${{ secrets.KEY }}
           port: 22
