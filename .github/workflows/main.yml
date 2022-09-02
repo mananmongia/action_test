@@ -27,7 +27,8 @@ jobs:
           HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
           USER_NAME : ubuntu
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key && ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY" ${USER_NAME}@${HOSTNAME}
+          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
+          ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY" ${USER_NAME}@${HOSTNAME}
           python --version
           '
   
