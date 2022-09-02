@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-          whoami
+          echo "i am::::"; whoami
           '
       # # Runs a set of commands using the runners shell
       # - name: SSH script
