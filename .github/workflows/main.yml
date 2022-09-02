@@ -70,7 +70,7 @@ jobs:
           var="$(node --version)" 
           if [[ $var =~ "v10.19.0" ]]; then exit; else exit 1 ; fi
           '
-Node-10.0?:
+  Node-10.0?:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
