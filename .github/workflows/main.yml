@@ -28,7 +28,7 @@ jobs:
           USER_NAME : ubuntu
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
-          ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY" ${USER_NAME}@${HOSTNAME}
+          ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY" ${USER_NAME}@${HOSTNAME} '
           python --version
           '
   
