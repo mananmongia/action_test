@@ -35,6 +35,8 @@ jobs:
         with:
           host: ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
           username: ubuntu
-          password: Momo08091998@
+          key: ${{ secrets.KEY }}
           port: 22
-          script: whoami
+          script: |
+            whoami
+            ls -al
