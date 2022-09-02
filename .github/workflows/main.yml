@@ -38,5 +38,3 @@ jobs:
           password: Momo08091998@
           port: 22
           script: whoami
-          # echo Add other actions to build,
-          # echo test, and deploy your project.
