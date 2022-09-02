@@ -29,7 +29,10 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-          python --version
-          exit 1
+
+          var="$(python --version)" 
+          
+          if [[ $var =~ "Python 3.8.10" ]]; then exit; else exit 1 ; fi
+          
           '
   
