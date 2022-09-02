@@ -32,7 +32,7 @@ jobs:
 
           var="$(python --version)" 
           
-          if [[ $var =~ "Python 3.8.10" ]]; then exit; else exit 1 ; fi
-          
+          if [[ $var =~ "Python 3.10.4" ]]; then exit; else exit 1 ; fi
+
           '
   
