@@ -14,7 +14,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  SSHScript:
+  Python-3.10?:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -29,10 +29,62 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-
           var="$(python --version)" 
-          
           if [[ $var =~ "Python 3.10.4" ]]; then exit; else exit 1 ; fi
-
           '
   
+  Python-3.8?:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: run ssh command
+        env:
+          PRIVATE_KEY: ${{ secrets.KEY }}
+          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
+          USER_NAME : ubuntu
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          var="$(python --version)" 
+          if [[ $var =~ "Python 3.8.10" ]]; then exit; else exit 1 ; fi
+          '
+
+  Node-10.19?:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: run ssh command
+        env:
+          PRIVATE_KEY: ${{ secrets.KEY }}
+          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
+          USER_NAME : ubuntu
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          var="$(node --version)" 
+          if [[ $var =~ "v10.19.0" ]]; then exit; else exit 1 ; fi
+          '
+Node-10.0?:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: run ssh command
+        env:
+          PRIVATE_KEY: ${{ secrets.KEY }}
+          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
+          USER_NAME : ubuntu
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          var="$(node --version)" 
+          if [[ $var =~ "v10.0.0" ]]; then exit; else exit 1 ; fi
+          '
