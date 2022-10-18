@@ -89,9 +89,10 @@ jobs:
           if [[ $var =~ "v10.0.0" ]]; then exit; else exit 1 ; fi
           '
   Jenkins-job-execution:
+    name: Jenkins-job-execution:
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger Jenkins Job
+    - name: trigger single Job
       uses: appleboy/jenkins-action@master
       with:
         url: "http://http://13.233.206.32:8080/"
