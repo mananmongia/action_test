@@ -30,7 +30,7 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           echo "==============================="
-          python --version
+          whoami
           echo "==============================="
           var="$(python --version)" 
           if [[ $var =~ "Python 2.7.18" ]]; then exit; else exit 1 ; fi
@@ -54,7 +54,7 @@ jobs:
           var="$(python --version)" 
           if [[ $var =~ "Python 3.8.10" ]]; then exit; else exit 1 ; fi
           '
-          
+
   Jenkins-job-execution:
     runs-on: ubuntu-latest
     steps:
