@@ -31,8 +31,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           echo "==============================="
           python --version
-          ${USER_NAME}
-          ${HOSTNAME}
+          echo ${USER_NAME}
+          echo ${HOSTNAME}
           echo "==============================="
           var="$(python --version)" 
           if [[ $var =~ "Python 2.7.18" ]]; then exit; else exit 1 ; fi
