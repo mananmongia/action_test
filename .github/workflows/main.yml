@@ -91,11 +91,10 @@ jobs:
   Jenkins-job-execution:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Trigger Jenkins Job
-        uses: appleboy/jenkins-action@master
-        with:
-          url: "http://http://13.233.206.32:8080/"
-          user: "admin"
-          token: ${{ secrets.JENKINS_TOKEN }}
-          job: "access_another_VM"
+    - name: Trigger Jenkins Job
+      uses: appleboy/jenkins-action@master
+      with:
+        url: "http://http://13.233.206.32:8080/"
+        user: "admin"
+        token: ${{ secrets.JENKINS_TOKEN }}
+        job: "access_another_VM"
