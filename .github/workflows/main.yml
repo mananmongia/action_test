@@ -93,7 +93,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Trigger Jenkins Job
-        uses: appleboy/jenkins-action@0.0.1
+        uses: appleboy/jenkins-action@master
         with:
           url: "http://http://13.233.206.32:8080/"
           user: "access_over_gitaction"
