@@ -89,7 +89,6 @@ jobs:
           if [[ $var =~ "v10.0.0" ]]; then exit; else exit 1 ; fi
           '
   Jenkins-job-execution:
-    name: Jenkins-job-execution:
     runs-on: ubuntu-latest
     steps:
     - name: trigger single Job
