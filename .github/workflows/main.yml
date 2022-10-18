@@ -27,14 +27,17 @@ jobs:
           HOSTNAME : ${{ secrets.HOST_NAME }}
           USER_NAME : ${{ secrets.USERNAME }}
         run: |
-          echo ${USER_NAME}
-          echo ${HOSTNAME}
-          
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           echo "==============================="
           python --version
-
+          python --version
+          python --version
+          python --version
+          python --version
+          python --version
+          python --version
+          python --version
           echo "==============================="
           var="$(python --version)" 
           if [[ $var =~ "Python 2.7.18" ]]; then exit; else exit 1 ; fi
