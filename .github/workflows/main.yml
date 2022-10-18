@@ -24,8 +24,8 @@ jobs:
       - name: run ssh command
         env:
           PRIVATE_KEY: ${{ secrets.KEY }}
-          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
-          USER_NAME : ubuntu
+          HOSTNAME : ${{ secrets.HOST_NAME }}
+          USER_NAME : ${{ secrets.USERNAME }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
@@ -43,8 +43,8 @@ jobs:
       - name: run ssh command
         env:
           PRIVATE_KEY: ${{ secrets.KEY }}
-          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
-          USER_NAME : ubuntu
+          HOSTNAME : ${{ secrets.HOST_NAME }}
+          USER_NAME : ${{ secrets.USERNAME }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
@@ -62,8 +62,8 @@ jobs:
       - name: run ssh command
         env:
           PRIVATE_KEY: ${{ secrets.KEY }}
-          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
-          USER_NAME : ubuntu
+          HOSTNAME : ${{ secrets.HOST_NAME }}
+          USER_NAME : ${{ secrets.USERNAME }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
@@ -79,12 +79,23 @@ jobs:
       # Runs a single command using the runners shell
       - name: run ssh command
         env:
-          PRIVATE_KEY: ${{ secrets.KEY }}
-          HOSTNAME : ec2-13-234-38-29.ap-south-1.compute.amazonaws.com
-          USER_NAME : ubuntu
+          PRIVATE_KEY: ${{ secrets.KEY }} 
+          HOSTNAME : ${{ secrets.HOST_NAME }}
+          USER_NAME : ${{ secrets.USERNAME }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           var="$(node --version)" 
           if [[ $var =~ "v10.0.0" ]]; then exit; else exit 1 ; fi
           '
+  Jenkins-job-execution:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Trigger Jenkins Job
+        uses: appleboy/jenkins-action@0.0.1
+        with:
+          url: "http://http://13.233.206.32:8080/"
+          user: "admin"
+          token: ${{ secrets.JENKINS_TOKEN }}
+          job: "access_another_VM"
