@@ -24,8 +24,8 @@ jobs:
       - name: run ssh command
         env:
           PRIVATE_KEY: ${{ secrets.KEY }}
-          HOSTNAME : ${{ secrets.HOST_NAME }}
-          USER_NAME : ${{ secrets.USERNAME }}
+          HOSTNAME : ec2-65-0-100-186.ap-south-1.compute.amazonaws.com
+          USER_NAME : ec2-user
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
