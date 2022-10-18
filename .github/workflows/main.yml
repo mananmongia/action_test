@@ -96,6 +96,6 @@ jobs:
         uses: appleboy/jenkins-action@0.0.1
         with:
           url: "http://http://13.233.206.32:8080/"
-          user: "admin"
+          user: "access_over_gitaction"
           token: ${{ secrets.JENKINS_TOKEN }}
           job: "access_another_VM"
